@@ -1,0 +1,34 @@
+<h1>Task Managment</h1>
+
+<div>
+    <table border='1' width='100%' style='border-collapse : collapse;'>
+            <tr>
+                <th>ID</th>
+                <th>Task Title</th>
+                <th>Task Status</th>
+                <th>Operation</th>
+            </tr>
+
+            <tr *ngFor="let task of tasks">
+                <td>{{task.id}}</td>
+                <td>{{task.title}}</td>
+                <td>{{task.taskState}}</td>
+                <td>
+                    <button (click)="deleteTask(task)">Delete</button>
+                    <button (click)="selectTask(task)">Update</button>
+                </td>
+            </tr>
+    </table>
+</div>
+
+<div>
+    <form #f = "ngForm">
+        <label>Title</label>
+        <input type="text" name="title" [(ngModel)] = "selectedTask.title">
+        <br>
+        <label>Status</label>
+        <input type="text" name="status" [(ngModel)] ="selectedTask.taskState">
+        <br>
+        <input type="button" (click)="createOrUpdatetask(f)" value="Create or Update policy">
+    </form>
+</div>
